@@ -1,0 +1,9 @@
+placeholders:
+  prefix: <gray>[<gradient:#77C4FB:#8CFDE9>HatFactory</gradient>]:</gray>
+
+stonecutter-lost: "<gray>Камнерез сломан или находится слишком далеко"
+hat-store-title: "<dark_gray>Создать шапку"
+reloaded: "%prefix%<gray> Конфигурация перезагружена. Загружено <green>%hats-count%</green> шапок."
+unknown-hat: "Неизвестная шапка '%hat-name%'"
+hat-given: "<gray>Вам выдано x%hat-amount% %hat-displayname%"
+hat-given-to-other: "<gray>Игроку <white>%player%</white> выдано x%hat-amount% %hat-displayname%"

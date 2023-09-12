@@ -1,0 +1,19 @@
+# # Название как у модели
+example_hat:
+  item:
+    material: CARVED_PUMPKIN
+    displayname: <rainbow>Крутая шапка
+    # Необязательное описание
+    lore: |-
+      <gray>Строка 1
+      <gray>Строка 2
+    custom-model-data: 51
+  # Необязательный второй ингедиент для покупки шапки
+  # ingredient-2: DIAMOND
+  # Или, с указанием количества
+  ingredient-2:
+    material: DIAMOND
+    amount: 3
+  # Если не указать никаких привилегий, шапка будет доступна для крафта всем
+  permissions:
+    - group.owner
