@@ -1,6 +1,7 @@
 # HatFactory
 
 ![Paper 1.20.1](https://img.shields.io/badge/Paper-1.20.1-blue)
+[![CI](https://github.com/outbreak-team/HatFactory/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/outbreak-team/HatFactory/actions/workflows/gradle.yml)
 
 Плагин, добавляющий в камнерез возможность открытия меню создания шапок, являющихся тыквами с изменённой
 custom_model_data.
