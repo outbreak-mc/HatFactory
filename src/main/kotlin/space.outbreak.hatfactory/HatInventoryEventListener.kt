@@ -28,7 +28,7 @@ class HatInventoryEventListener(
     private fun checkStonecutter(player: Player, stonecutterInv: Inventory): Boolean {
         val loc = stonecutterInv.location
         if (loc != null)
-            return loc.block.type == Material.STONECUTTER && loc.distance(player.location) < 3
+            return loc.block.type == Material.STONECUTTER && loc.distance(player.location) < 4
         return false
     }
 
@@ -54,7 +54,7 @@ class HatInventoryEventListener(
 
         playersToBackToStonecutter[event.whoClicked as Player] = event.clickedInventory ?: return
         event.isCancelled = true
-        player.closeInventory()
+
         Bukkit.getScheduler().runTaskLater(plugin, Runnable {
             manager.openStore(player)
         }, 1L)
@@ -111,7 +111,6 @@ class HatInventoryEventListener(
 
         if (checkStonecutter(player, stonecutterInv)) {
             Bukkit.getScheduler().runTaskLater(plugin, Runnable {
-                player.openInventory(stonecutterInv)
                 playersToBackToStonecutter.remove(player)
             }, 1L)
         }

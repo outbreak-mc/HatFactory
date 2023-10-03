@@ -3,14 +3,17 @@ package space.outbreak.hatfactory
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.arguments.ArgumentSuggestions
+import dev.jorel.commandapi.arguments.BooleanArgument
 import dev.jorel.commandapi.arguments.IntegerArgument
 import dev.jorel.commandapi.arguments.PlayerArgument
 import dev.jorel.commandapi.arguments.StringArgument
 import dev.jorel.commandapi.executors.CommandExecutor
 import dev.jorel.commandapi.executors.PlayerCommandExecutor
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
 class HatFactoryCommands(
     private val plugin: HatFactoryPlugin
@@ -47,7 +50,15 @@ class HatFactoryCommands(
                     }),
                 CommandAPICommand("store")
                     .withPermission(Permissions.STORE)
-                    .executesPlayer(PlayerCommandExecutor { player, _ -> manager.openStore(player) })
+                    .withOptionalArguments(
+                        BooleanArgument("free").withPermission(Permissions.GIVE)
+                    )
+                    .executesPlayer(PlayerCommandExecutor { player, args ->
+                        val noSecondIngredient = args.getOptional("free").orElse(false) as Boolean
+                        if (!player.inventory.contains(Material.CARVED_PUMPKIN))
+                            player.inventory.addItem(ItemStack(Material.CARVED_PUMPKIN, 64))
+                        manager.openStore(player, noSecondIngredient)
+                    })
             )
             .register()
     }

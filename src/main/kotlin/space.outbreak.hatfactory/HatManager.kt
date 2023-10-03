@@ -46,16 +46,17 @@ class HatManager(
         hats.clear()
     }
 
-    fun openStore(player: Player): InventoryView? {
+    fun openStore(player: Player, noSecondIngredient: Boolean = false): InventoryView? {
         val inv = Bukkit.createMerchant(Locale.HAT_STORE_TITLE.comp())
         val recipes = mutableListOf<MerchantRecipe>()
         for (hat in hats.values) {
+            val recipe = if (noSecondIngredient) hat.merchantRecipeNoSecondIngredient else hat.merchantRecipe
             if (hat.permissions.isEmpty() || player.hasPermission(hat.obtainPermission)) {
-                recipes.add(hat.merchantRecipe)
+                recipes.add(recipe)
             } else {
                 for (perm in hat.permissions) {
                     if (player.hasPermission(perm)) {
-                        recipes.add(hat.merchantRecipe)
+                        recipes.add(recipe)
                         break
                     }
                 }

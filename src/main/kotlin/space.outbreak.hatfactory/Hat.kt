@@ -28,4 +28,15 @@ class Hat(
                 this.addIngredient(secondRecipeItem)
         }
     }
+
+    val merchantRecipeNoSecondIngredient: MerchantRecipe by lazy {
+        MerchantRecipe(
+            getItemStack(),
+            0,
+            99999999,
+            false,
+        ).apply {
+            this.addIngredient(firstRecipeItem)
+        }
+    }
 }

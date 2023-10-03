@@ -35,7 +35,7 @@ enum class Locale {
     companion object {
         /**
          * Оборачивает компонент в компонент с явно отключенным курсивом.
-         * Може быть полезно, чтобы убирать курсив из описаний и названий предметов.
+         * Может быть полезно, чтобы убирать курсив из описаний и названий предметов.
          * */
         fun deitalize(comp: Component): Component {
             val dn = Component.empty().decoration(TextDecoration.ITALIC, false)
